@@ -9,55 +9,45 @@
 *   http://www.packtpub.com/cool-projects-with-opencv/book
 ******************************************************************************
 
+#This is a fork, added benchamrking of FPS and to save faces and re-recognize. Vita Vidaurre 2014
 
 Note: You need OpenCV v2.4.1 or later (from June 2012), otherwise the FaceRecognizer will not compile or run.
-And you need atleast 3 Face & Eye detection XML files from OpenCV, as shown below.
+And you need atleast 3 Face & Eye detection XML files from OpenCV.
+
+install opencv 2.x.x in linux :
+Download .zip at opencv.org
+
+extract and cd to the directory
+
+mkdir build
+
+cd build
+
+sudo apt-get install build-essential libgtk2.0-dev libjpeg-dev libtiff4-dev libjasper-dev libopenexr-dev cmake python-dev python-numpy python-tk libtbb-dev libeigen2-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev libqt4-dev libqt4-opengl-dev sphinx-common texlive-latex-extra libv4l-dev libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev
+hours later...
+
+cmake -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
+hours later...
+
+make
+hours later...
+
+sudo make install
+Now you have OpenCV 2.x.x installed in your computer with C, C++, Python, TBB, OpenGL, Video, and Qt support.
+
 
 ----------------------------------------------------------
 Building the project using CMake from the command-line:
 ----------------------------------------------------------
 Linux:
-    export OpenCV_DIR="~/OpenCV/build"
-    mkdir build
-    cd build
-    cp $OpenCV_DIR/../data/lbpcascades/lbpcascade_frontalface.xml .
-    cp $OpenCV_DIR/../data/haarcascades/haarcascade_eye.xml .
-    cp $OpenCV_DIR/../data/haarcascades/haarcascade_eye_tree_eyeglasses.xml .
-    cmake -D OpenCV_DIR=$OpenCV_DIR ..
-    make 
+        ./Build
+     
 
-MacOSX (Xcode):
-    export OpenCV_DIR="~/OpenCV/build"
-    mkdir build
-    cd build
-    cp $OpenCV_DIR/../data/lbpcascades/lbpcascade_frontalface.xml .
-    cp $OpenCV_DIR/../data/haarcascades/haarcascade_eye.xml .
-    cp $OpenCV_DIR/../data/haarcascades/haarcascade_eye_tree_eyeglasses.xml .
-    cmake -G Xcode -D OpenCV_DIR=$OpenCV_DIR ..
-    open WebcamFaceRec.xcodeproj
 
-Windows (MS Visual Studio):
-    set OpenCV_DIR="C:\OpenCV\build"
-    mkdir build
-    cd build
-    mkdir Debug
-    mkdir Release
-    copy %OpenCV_DIR%\..\data\lbpcascades\lbpcascade_frontalface.xml .\Debug\
-    copy %OpenCV_DIR%\..\data\lbpcascades\lbpcascade_frontalface.xml .\Release\
-    copy %OpenCV_DIR%\..\data\haarcascades\haarcascade_eye.xml .\Debug\
-    copy %OpenCV_DIR%\..\data\haarcascades\haarcascade_eye.xml .\Release\
-    copy %OpenCV_DIR%\..\data\haarcascades\haarcascade_eye_tree_eyeglasses.xml .\Debug\
-    copy %OpenCV_DIR%\..\data\haarcascades\haarcascade_eye_tree_eyeglasses.xml .\Release\
-    cmake -G "Visual Studio 9 2008" -D OpenCV_DIR=%OpenCV_DIR% ..
-    start WebcamFaceRec.sln 
-
-    
 ----------------------------------------------------------
 Running the project:
 ----------------------------------------------------------
-Just execute "WebcamFaceRec".
+Just execute           ./DifferentFacesDetection
 
 If it says it can't find a Haar or LBP cascade XML file, copy those XML files from the OpenCV "data" folder to your current folder.
-
-Warning for Visual Studio users: If you run the program directly in Visual Studio (eg: by clicking on "Debug->Start Without Debugging"), then Visual Studio will default to setting the "current folder" as the parent folder instead of the folder with "WebcamFaceRec.exe". So you might need to move or copy the XML file from the Debug / Release folder to the parent folder for it to run directly in Visual Studio. Or adjust your project properties so that it executes the program in the project output folder instead of the solution folder.
 
