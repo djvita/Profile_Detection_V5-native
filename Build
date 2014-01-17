@@ -1,0 +1,1 @@
+g++ main.cpp detectObject.cpp preprocessFace.cpp recognition.cpp ImageUtils_0.7.cpp -o DifferentFacesDetection `pkg-config opencv --libs` `pkg-config opencv --cflags`

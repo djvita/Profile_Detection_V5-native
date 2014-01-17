@@ -1,0 +1,18 @@
+
+ #include <sys/time.h>
+#include <time.h>
+
+static unsigned int GetTimeStamp_us(void)
+{
+struct timeval curentTime;
+gettimeofday(&curentTime, NULL);
+return (curentTime.tv_sec *1000000 + curentTime.tv_usec);
+}
+unsigned int startTime;
+unsigned int stopTime;
+float deltaTime;        
+    startTime = GetTimeStamp_us();
+stopTime = GetTimeStamp_us();
+        deltaTime = stopTime - startTime;
+        printf("%1.0f ms/frame -> %1.1f FPS\n", deltaTime/1000, 1000000/deltaTime ); //FPS
+        fflush(stdout);
