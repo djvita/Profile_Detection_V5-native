@@ -46,8 +46,8 @@ const int faceHeight = faceWidth;
 
 // Try to set the camera resolution. Note that this only works for some cameras on
 // some computers and only for some drivers, so don't rely on it to work!
-const int DESIRED_CAMERA_WIDTH = 1024;
-const int DESIRED_CAMERA_HEIGHT = 768;
+const int DESIRED_CAMERA_WIDTH = 640;
+const int DESIRED_CAMERA_HEIGHT = 480;
 
 // Parameters controlling how often to keep new faces when collecting them. Otherwise, the training set could look to similar to each other!
 const double CHANGE_IN_IMAGE_FOR_COLLECTION = 0.3;      // How much the facial image should change before collecting a new face photo for training.

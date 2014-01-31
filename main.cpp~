@@ -566,7 +566,7 @@ void recognizeAndTrainUsingWebcam(VideoCapture &videoCapture, CascadeClassifier 
         int identity = -1;
 
         // Find a face and preprocess it to have a standard size and contrast & brightness.
-        Point faceRect;  // Position of detected face.
+        Rect faceRect;  // Position of detected face.
         Rect searchedLeftEye, searchedRightEye; // top-left and top-right regions of the face, where eyes were searched.
         Point leftEye, rightEye;    // Position of the detected eyes.
         Mat preprocessedFace = getPreprocessedFace(displayedFrame, faceWidth, faceCascade, eyeCascade1, eyeCascade2, preprocessLeftAndRightSeparately, &faceRect, &leftEye, &rightEye, &searchedLeftEye, &searchedRightEye);
@@ -577,7 +577,7 @@ void recognizeAndTrainUsingWebcam(VideoCapture &videoCapture, CascadeClassifier 
 
         // Draw an anti-aliased rectangle around the detected face.
         if (faceRect.width > 0) {
-            circle(displayedFrame, faceRect, CV_RGB(0, 0, 0), 2, CV_AA);
+            rectangle(displayedFrame, faceRect, CV_RGB(0, 0, 0), 2, CV_AA);
 
             // Draw light-blue anti-aliased circles for the 2 eyes.
             Scalar eyeColor = CV_RGB(0,255,255);
